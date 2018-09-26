@@ -2,18 +2,6 @@
 # yarn lockfile v1
 
 
-"@videojs/http-streaming@1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@videojs/http-streaming/-/http-streaming-1.1.0.tgz#ae51919491090eacaab525da30bc0c1beede2515"
-  dependencies:
-    aes-decrypter "3.0.0"
-    global "^4.3.0"
-    m3u8-parser "4.2.0"
-    mpd-parser "0.6.1"
-    mux.js "4.4.1"
-    url-toolkit "^2.1.3"
-    video.js "^6.8.0 || ^7.0.0"
-
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"
@@ -38,20 +26,6 @@ acorn@^4.0.3:
 acorn@^5.0.0, acorn@^5.3.0:
   version "5.7.3"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
-
-aes-decrypter@1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/aes-decrypter/-/aes-decrypter-1.0.3.tgz#9c06b8a5435a5ad09db933f8a014afcf184cc34e"
-  dependencies:
-    pkcs7 "^0.2.3"
-
-aes-decrypter@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/aes-decrypter/-/aes-decrypter-3.0.0.tgz#7848a1c145b9fdbf57ae3e2b5b1bc7cf0644a8fb"
-  dependencies:
-    commander "^2.9.0"
-    global "^4.3.2"
-    pkcs7 "^1.0.2"
 
 ajv-keywords@^3.1.0:
   version "3.2.0"
@@ -1302,7 +1276,7 @@ commander@2.17.x, commander@~2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
 
-commander@^2.13.0, commander@^2.9.0:
+commander@^2.13.0:
   version "2.18.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.18.0.tgz#2bf063ddee7c7891176981a2cc798e5754bc6970"
 
@@ -2396,7 +2370,7 @@ glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.2:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-global@4.3.2, global@^4.3.0, global@^4.3.1, global@^4.3.2, global@~4.3.0:
+global@4.3.2, global@^4.3.1, global@^4.3.2, global@~4.3.0:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/global/-/global-4.3.2.tgz#e76989268a6c74c38908b1305b10fc0e394e9d0f"
   dependencies:
@@ -2520,9 +2494,13 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
-he@1.1.x, he@^1.1.0:
+he@1.1.x:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/he/-/he-1.1.1.tgz#93410fd21b009735151f8868c2f271f3427e23fd"
+
+he@^1.1.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
 
 hmac-drbg@^1.0.0:
   version "1.0.1"
@@ -3215,14 +3193,6 @@ lru-cache@^4.0.1, lru-cache@^4.1.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-m3u8-parser@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/m3u8-parser/-/m3u8-parser-2.1.0.tgz#c8170329ec1cd515d0d58bb8b762da9896cb0368"
-
-m3u8-parser@4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/m3u8-parser/-/m3u8-parser-4.2.0.tgz#c8e0785fd17f741f4408b49466889274a9e36447"
-
 make-dir@^1.0.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/make-dir/-/make-dir-1.3.0.tgz#79c1033b80515bd6d24ec9933e860ca75ee27f0c"
@@ -3447,13 +3417,6 @@ move-concurrently@^1.0.1:
     rimraf "^2.5.4"
     run-queue "^1.0.3"
 
-mpd-parser@0.6.1:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/mpd-parser/-/mpd-parser-0.6.1.tgz#27e7aafe075817846ce55406ac03711df1ce0eb7"
-  dependencies:
-    global "^4.3.0"
-    url-toolkit "^2.1.1"
-
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -3472,14 +3435,6 @@ multicast-dns@^6.0.1:
   dependencies:
     dns-packet "^1.3.1"
     thunky "^1.0.2"
-
-mux.js@4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/mux.js/-/mux.js-4.3.2.tgz#576d537df037dc5ec35ec1316b948d815d35c210"
-
-mux.js@4.4.1:
-  version "4.4.1"
-  resolved "http://registry.npmjs.org/mux.js/-/mux.js-4.4.1.tgz#c9c9a5e7e9f69f1d5670f2cc71c4cefa45aa7aec"
 
 nan@^2.9.2:
   version "2.11.0"
@@ -3958,14 +3913,6 @@ pinkie-promise@^2.0.0:
 pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
-
-pkcs7@^0.2.3:
-  version "0.2.3"
-  resolved "http://registry.npmjs.org/pkcs7/-/pkcs7-0.2.3.tgz#22d60666d01065c5f24439098e4a4830452273be"
-
-pkcs7@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/pkcs7/-/pkcs7-1.0.2.tgz#b6dba527528c2942bfc122ce2dafcdb5e59074e7"
 
 pkg-dir@^2.0.0:
   version "2.0.0"
@@ -5400,10 +5347,6 @@ url-parse@^1.1.8, url-parse@^1.4.3:
     querystringify "^2.0.0"
     requires-port "^1.0.0"
 
-url-toolkit@^2.1.1, url-toolkit@^2.1.3:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/url-toolkit/-/url-toolkit-2.1.6.tgz#6d03246499e519aad224c44044a4ae20544154f2"
-
 url@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
@@ -5462,7 +5405,7 @@ vendors@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.2.tgz#7fcb5eef9f5623b156bcea89ec37d63676f21801"
 
-"video.js@^5.17.0 || ^6.2.0", "video.js@^5.19.1 || ^6.2.0", video.js@^6.6.0:
+video.js@^6.1.0, video.js@^6.2.4:
   version "6.12.1"
   resolved "https://registry.yarnpkg.com/video.js/-/video.js-6.12.1.tgz#872e57a8cc538669a9476348406fa62e5678a110"
   dependencies:
@@ -5475,60 +5418,17 @@ vendors@^1.0.0:
     videojs-vtt.js "0.12.6"
     xhr "2.4.0"
 
-"video.js@^6 || ^7", "video.js@^6.8.0 || ^7.0.0":
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/video.js/-/video.js-7.1.0.tgz#93de7ec3396d3edb3fab0ffd4e9d3237e7e068ec"
-  dependencies:
-    "@videojs/http-streaming" "1.1.0"
-    babel-runtime "^6.9.2"
-    global "4.3.2"
-    safe-json-parse "4.0.0"
-    tsml "1.0.1"
-    videojs-font "3.0.0"
-    videojs-vtt.js "0.14.1"
-    xhr "2.4.0"
-
-videojs-contrib-hls@^5.12.2:
-  version "5.14.1"
-  resolved "https://registry.yarnpkg.com/videojs-contrib-hls/-/videojs-contrib-hls-5.14.1.tgz#eba4f4f6772a74a68ee7a213536ed7d2738972bd"
-  dependencies:
-    aes-decrypter "1.0.3"
-    global "^4.3.0"
-    m3u8-parser "2.1.0"
-    mux.js "4.3.2"
-    url-toolkit "^2.1.3"
-    video.js "^5.19.1 || ^6.2.0"
-    videojs-contrib-media-sources "4.7.2"
-    webwackify "0.1.6"
-
-videojs-contrib-media-sources@4.7.2:
-  version "4.7.2"
-  resolved "https://registry.yarnpkg.com/videojs-contrib-media-sources/-/videojs-contrib-media-sources-4.7.2.tgz#0adf929107d5b74cf2c8abb2824c82177e43858e"
-  dependencies:
-    global "^4.3.0"
-    mux.js "4.3.2"
-    video.js "^5.17.0 || ^6.2.0"
-    webwackify "0.1.6"
-
-videojs-flash@^2.1.0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/videojs-flash/-/videojs-flash-2.1.1.tgz#4fa99f4e09235193326c296b1f3b083a5aacd1c9"
+videojs-flash@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/videojs-flash/-/videojs-flash-2.1.0.tgz#8a262ada96a6f985e4776a1e1612990e8ba19311"
   dependencies:
     global "^4.3.2"
-    video.js "^6 || ^7"
+    video.js "^6.1.0"
     videojs-swf "5.4.1"
 
 videojs-font@2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/videojs-font/-/videojs-font-2.1.0.tgz#a25930a67f6c9cfbf2bb88dacb8c6b451f093379"
-
-videojs-font@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/videojs-font/-/videojs-font-3.0.0.tgz#90eafddcf26b407448c833523f5ca4ad8d5cc1af"
-
-videojs-hotkeys@^0.2.20:
-  version "0.2.22"
-  resolved "https://registry.yarnpkg.com/videojs-hotkeys/-/videojs-hotkeys-0.2.22.tgz#76f917b1a70e7bf9da5f7f8cd33d5a032c0284be"
 
 videojs-ie8@1.1.2:
   version "1.1.2"
@@ -5543,12 +5443,6 @@ videojs-swf@5.4.1:
 videojs-vtt.js@0.12.6:
   version "0.12.6"
   resolved "https://registry.yarnpkg.com/videojs-vtt.js/-/videojs-vtt.js-0.12.6.tgz#e078600bda899eaa6f9c3307134cd0c811947b8e"
-  dependencies:
-    global "^4.3.1"
-
-videojs-vtt.js@0.14.1:
-  version "0.14.1"
-  resolved "https://registry.yarnpkg.com/videojs-vtt.js/-/videojs-vtt.js-0.14.1.tgz#da583eb1fc9c81c826a9432b706040e8dea49911"
   dependencies:
     global "^4.3.1"
 
@@ -5587,9 +5481,9 @@ vue-style-loader@^3.0.0, vue-style-loader@^3.0.1:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
 
-vue-template-compiler@^2.5.2:
-  version "2.5.17"
-  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.5.17.tgz#52a4a078c327deb937482a509ae85c06f346c3cb"
+vue-template-compiler@2.5.16:
+  version "2.5.16"
+  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.5.16.tgz#93b48570e56c720cdf3f051cc15287c26fbd04cb"
   dependencies:
     de-indent "^1.0.2"
     he "^1.1.0"
@@ -5598,19 +5492,15 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue-video-player@5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/vue-video-player/-/vue-video-player-5.0.2.tgz#34a42239ff304efc7698da20a4165051d766c1e6"
+vue-video-player@4.0.6:
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/vue-video-player/-/vue-video-player-4.0.6.tgz#c95debaacb8fc8633e73295030cc70da7dd5c597"
   dependencies:
-    object-assign "^4.1.1"
-    video.js "^6.6.0"
-    videojs-contrib-hls "^5.12.2"
-    videojs-flash "^2.1.0"
-    videojs-hotkeys "^0.2.20"
+    video.js "^6.2.4"
 
-vue@^2.5.17:
-  version "2.5.17"
-  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
+vue@2.5.16:
+  version "2.5.16"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 
 watchpack@^1.4.0:
   version "1.6.0"
@@ -5735,10 +5625,6 @@ websocket-driver@>=0.5.1:
 websocket-extensions@>=0.1.1:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
-
-webwackify@0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/webwackify/-/webwackify-0.1.6.tgz#1d42a12ac61823d7e345abde084eaaa62a4a95eb"
 
 whet.extend@~0.9.9:
   version "0.9.9"

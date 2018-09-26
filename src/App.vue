@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import rtmp from './components/rtmp-demo.vue'
+import rtmp from './components/rtmp.vue'
 
 export default {
   name: 'App',
