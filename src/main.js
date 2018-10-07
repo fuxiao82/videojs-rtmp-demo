@@ -18,6 +18,12 @@ import App from './App'
 import VideoPlayer from 'vue-video-player'
 
 import 'videojs-flash'
+import 'videojs-contrib-hls'
+
+// plugin
+import 'videojs-hotkeys'
+import 'videojs-resolution-switcher'
+
 require('video.js/dist/video-js.css')
 
 require('vue-video-player/src/custom-theme.css')
