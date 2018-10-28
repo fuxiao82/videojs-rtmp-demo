@@ -17,16 +17,24 @@ import App from './App'
 // import 'vue-video-player/src/custom-theme.css'
 import VideoPlayer from 'vue-video-player'
 
+// plugin
 import 'videojs-flash'
 import 'videojs-contrib-hls'
-
-// plugin
 import 'videojs-hotkeys'
 import 'videojs-resolution-switcher'
+// import 'videojs-thumbnails/dist/browser/videojs-thumbnails.js'
+// import 'videojs-sprite-thumbnails/dist/videojs-sprite-thumbnails.js'
+import 'videojs-sprite-thumbnails'
+// import 'videojs-sprite-thumbnails-for-videojs6'
 
-require('video.js/dist/video-js.css')
+// plugin css
+import 'video.js/dist/video-js.css'
+import 'vue-video-player/src/custom-theme.css'
 
-require('vue-video-player/src/custom-theme.css')
+import './videojs.thumbnails.css'
+import './videojs.thumbnails.js'
+// import 'videojs-thumbnails/dist/browser/videojs-thumbnails.css'
+
 Vue.use(VideoPlayer)
 
 

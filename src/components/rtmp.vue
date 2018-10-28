@@ -1,53 +1,53 @@
 <template>
     <div class="container">
-        <button @click='switchSrc(player)' class='switch-btn'>switch src</button>
+      <div class="button-wrapper">
+        <button @click='switchSrc(player, playerSource1)' class='switch-btn'>switch src1 小鸟</button>
+        <button @click='switchSrc(player, playerSource2)' class='switch-btn'>switch src2 中文卫视</button>
+        <button @click='switchSrc(player, playerSource3)' class='switch-btn'>switch src3 石头</button>
+        <button @click='switchSrc(player, playerSource4)' class='switch-btn'>switch src4 黑凤梨</button>
+        <!-- <button @click='switchSrc(player, playerSourceDash)' class='switch-btn'>switchToDash</button> -->
+      </div>
+        
         <div class="player">
             <video-player class="video-player vjs-custom-skin"
                 ref="videoPlayer1"
                 :playsinline="true"
                 :options="playerOptions"
-                @play="onPlayerPlay"
-                @pause="onPlayerPause"
-                @ended="onPlayerEnded"
-                @waiting="onPlayerWaiting"
-                @playing="onPlayerPlaying"
-                @loadeddata="onPlayerLoadeddata"
-                @timeupdate="onPlayerTimeupdate"
-                @canplay="onPlayerCanplay"
-                @canplaythrough="onPlayerCanplaythrough"
-                @statechanged="onPlayerStateChanged"
-                @ready="onPlayerReadied"
-                @on-change="onProgressChange"
+                @ended="ended"
+                @play="play"
+                @playing="playing"
+                @pause="pause"
+                @waiting="waiting"
+                @loadeddata="loadeddata"
+                @timeupdate="timeupdate"
+                @canplay="canplay"
+                @canplaythrough="canplaythrough"
+                @statechanged="statechanged"
+                @ready="ready"
+                @on-change="change"
                 @handleFullscreenChange="handleFullscreenChange"
-                @resolutionchange='resolutionChange'
+                @handleMouseMove='handleMouseMove'
+                @durationchange='durationchange'
+                @volumechange='volumechange'
+                @loadstart='loadstart' 
+                @suspend='suspend'
+                @progress='progress'
+                @ratechange='ratechange'
             ></video-player>
+                <!-- @resize='resize' -->
+                <!-- @abort='abort' 
+                @error='error' 
+                @emptied='emptied' 
+                @stalled='stalled'
+                @loadedmetadata='loadedmetadata' 
+                @seeking='seeking' 
+                @seeked='seeked' -->
         </div>
-        <!-- <div class="player">
-          <video-player class="video-player vjs-custom-skin"
-              ref="videoPlayer2"
-              :playsinline="true"
-              :options="playerOptions2"
-          ></video-player>
-        </div>
-        <div class="player">
-          <video-player class="video-player vjs-custom-skin"
-              ref="videoPlayer3"
-              :playsinline="true"
-              :options="playerOptions3"
-          ></video-player>
-        </div>
-        <div class="player">
-          <video-player class="video-player vjs-custom-skin"
-              ref="videoPlayer4"
-              :playsinline="true"
-              :options="playerOptions4"
-          ></video-player>
-        </div>
-      </div> -->
     </div>
 </template>
  
 <script>
+
 export default {
   name: 'RtmpVideo',
   data () {
@@ -56,7 +56,7 @@ export default {
       currentTech: '',
       playerOptions: {
         aspectRatio: '16:9',
-        autoplay: false,//自动播放
+        autoplay: true,//自动播放
         controlBar: {
           timeDivider: false, // 时间分割线
           durationDisplay: false, // 总时间
@@ -65,7 +65,7 @@ export default {
           fullscreenToggle: true // 全屏
         },
         controls: true,//进度条
-        // fluid: true,//按流体大小自适应
+        fluid: true,//按流体大小自适应
         // flash: {
         //   swf: '../../../static/VideoJS.swf'
         // },
@@ -76,14 +76,14 @@ export default {
         language: 'zh-CN',
         notSupportedMessage: '此视频暂无法播放，请查看是否安装flash',//无法播放时显示的信息
         overNative: true,
-        poster: require('../assets/cover.png'),  //静止时的画面
+        poster: require('../assets/img/cover/1.png'),  //静止时的画面
         preload: true,
         label: '原始流1',
         // 流配置，数组形式，会根据兼容顺序自动切换
         sources: [
           {
-            type: 'rtmp/mp4',
-            src: 'rtmp://media3.sinovision.net:1935/live/livestream',
+            type: 'video/mp4',
+            src: 'http://221.228.226.23/11/t/j/v/b/tjvbwspwhqdmgouolposcsfafpedmb/sh.yinyuetai.com/691201536EE4912BF7E4F1E2C67B8119.mp4',
             label: '原始流1'
           },
           // {
@@ -103,73 +103,87 @@ export default {
       playerOptions2: null,
       playerOptions3: null,
       playerOptions4: null,
+      playerSourceDashOption: null,
+
+
       playerSource1: null,
       playerSource2: null,
       playerSource3: null,
       playerSource4: null,
+      playerSourceDash: null
     }
   },
   computed: {
-    player() {
+    player () {
       return this.$refs.videoPlayer1.player;
     },
-    current() {
+    current () {
       return this.player.currentResolution();
     }
   },
   methods: {
-    onPlayerReadied (player) {
-      // console.log('onPlayerReadied');
+    loadstart () {
+      console.log('loadstart');
+    },
+    suspend () {
+      console.log('suspend');
+    },
+    ready (player) {
+      // console.log('ready');
       this.initHotKey(player);
       this.initSwitch(player);
+      this.initThumb(player);
+    },
+    volumechange () {
+      console.log('volumechange');
     },
     onTimeupdate (e) {
       // console.log('onTimeupdate');
     },
-    onProgressChange () {
-      // console.log('onProgressChange');
+    change () {
+      console.log('change');
     },
-    onPlayerPlay()  { 
-      // console.log('onPlayerPlay');
+    play () {
+      // console.log('play');
     },
-    onPlayerPause () { 
-      // console.log('onPlayerPause');
+    pause () {
+      // console.log('pause');
     },
-    onPlayerEnded () { 
-      // console.log('onPlayerEnded');
+    ended () {
+      // console.log('ended');
     },
-    onPlayerWaiting  (){
-      // console.log('onPlayerWaiting');
-     },
-    onPlayerPlaying () { 
-      // console.log('onPlayerPlaying');
+    waiting () {
+      // console.log('waiting');
     },
-    onPlayerLoadeddata()  { 
-      // console.log('onPlayerLoadeddata');
+    playing () {
+      // console.log('playing');
     },
-    onPlayerTimeupdate () { 
-      // console.log('onPlayerTimeupdate');
+    loadeddata () {
+      // console.log('loadeddata');
     },
-    onPlayerCanplay () {
-      // console.log('onPlayerCanplay');
+    timeupdate () {
+      // console.log('timeupdate');
     },
-    onPlayerCanplaythrough () {
-      // console.log('onPlayerCanplaythrough');
+    canplay () {
+      // console.log('canplay');
     },
-    onPlayerStateChanged () { 
-      // console.log('onPlayerStateChanged');
+    canplaythrough () {
+      // console.log('canplaythrough');
+    },
+    statechanged () {
+      // console.log('statechanged');
     },
     /**
      * 全屏切换回调
      */
-    handleFullscreenChange(e) {
+    handleFullscreenChange (e) {
       console.log('handleFullscreenChange');
     },
-    setFullScreen() {
+    setFullScreen () {
       console.log('setFullScreen');
       this.player.requestFullscreen();
     },
-    initHotKey(player) {
+    initHotKey (player) {
       // console.log(typeof player.hotkeys)
       player.hotkeys({
         volumeStep: 0.1,
@@ -177,7 +191,7 @@ export default {
         seekStep: 5,
         enableModifiersForNumbers: false,
         enableFullscreen: true,// Enables toggling the video fullscreen by pressing the F key (default: true)
-        fullscreenKey: function(event, player) {
+        fullscreenKey: function (event, player) {
           // console.log(event)
           // override fullscreen to trigger when pressing the xF key or Ctrl+Enter
           return ((event.which === 70) || (event.ctrlKey && event.which === 13));
@@ -187,17 +201,17 @@ export default {
     /**
      * 初始化切换源插件
      */
-    initSwitch(player) {
+    initSwitch (player) {
       // console.log(typeof player.videoJsResolutionSwitcher)
       player.videoJsResolutionSwitcher({
         default: 'high',
         dynamicLabel: true
       });
     },
-    switchSrc(player) {
+    switchSrc (player, sources) {
       // console.log(player);
       // Add dynamically sources via updateSrc method
-      let {src, type, label} = {...this.playerSource1.sources[0]};
+      let { src, type, label } = { ...sources.sources[0] };
 
       player.updateSrc([
         {
@@ -206,12 +220,98 @@ export default {
           label
         }
       ]);
-      // this.player.src = this.playerOptions2.sources[0].src;
     },
-    resolutionChange(player) {
+    resolutionChange (player) {
       console.log(player);
       console.log('Source changed to %s', player.src())
+    },
+    initThumb (player) {
+      // console.log(player)
+      // console.log(player.spriteThumbnails);
+      player.thumbnails({
+        0: {
+          src: 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3874676548,29357861&fm=11&gp=0.jpg',
+          style: {
+            left: '-60px',
+            width: '600px',
+            height: '68px',
+            clip: 'rect(0, 120px, 68px, 0)'
+          }
+        },
+        10: {
+          src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1540741630466&di=0c78d5b0350d1730c8cc36d532ee2993&imgtype=0&src=http%3A%2F%2Fh.hiphotos.baidu.com%2Fbaike%2Fpic%2Fitem%2Fd1a20cf431adcbef011db9bba6af2edda3cc9f66.jpg',
+          style: {
+            left: '-180px',
+            clip: 'rect(0, 240px, 68px, 120px)'
+          }
+        },
+        20: {
+          style: {
+            left: '-300px',
+            clip: 'rect(0, 360px, 68px, 240px)'
+          }
+        },
+        30: {
+          style: {
+            left: '-420px',
+            clip: 'rect(0, 480px, 68px, 360px)'
+          }
+        },
+        40: {
+          style: {
+            left: '-540px',
+            clip: 'rect(0, 600px, 68px, 480px)'
+          }
+        }
+      });
+      // player.thumbnails({
+      //   interval: 10,
+      //   path: [
+      //     'http://solutions.brightcove.com/bcls/assets/images/Tiger-4-preview.jpg',
+      //     '../assets/img/thumb/1.PNG',
+      //     '../assets/img/thumb/2.PNG',
+      //     '../assets/img/thumb/3.PNG',
+      //     '../assets/img/thumb/4.PNG',
+      //     '../assets/img/thumb/5.PNG',
+      //   ],
+      //   url: 'http://solutions.brightcove.com/bcls/assets/images/Tiger-4-preview.jpg',
+      //   width: 240,
+      //   height: 100,
+      // });
+      // setup 160x90 thumbnails in sprite.jpg, 1 per second
+      // player.spriteThumbnails({
+      //   url: 'http://solutions.brightcove.com/bcls/assets/images/Tiger-4-preview.jpg',
+      //   width: 160,
+      //   height: 90
+      // });
+      // player.thumbnails(
+      //   {
+      //     "0": {
+      //       "src": "http://solutions.brightcove.com/bcls/assets/images/Tiger-4-preview.jpg"
+      //     }
+      //   }
+      // );
+    },
+    durationchange (e) {
+      console.log('durationchange')
+      console.log(e)
+    },
+    progress () {
+      console.log('progress')
+    },
+    ratechange () {
+      console.log('ratechange')
+    },
+    seeked () {
+      console.log('seeked')
+    },
+    fullscreenchange () {
+      console.log('fullscreenchange')
+    },
+    handleMouseMove () {
+      console.log('handleMouseMove')
     }
+
 
   },
   beforeDestroy () {
@@ -231,7 +331,7 @@ export default {
       ]
     };
     this.playerOptions1 = Object.assign({}, this.playerOptions, this.playerSource1);
-    
+
     this.playerSource2 = {
       sources: [// 流配置，数组形式，会根据兼容顺序自动切换
         {
@@ -242,7 +342,7 @@ export default {
       ]
     };
     this.playerOptions2 = Object.assign({}, this.playerOptions, this.playerSource2);
-    
+
     this.playerSource3 = {
       sources: [// 流配置，数组形式，会根据兼容顺序自动切换
         {
@@ -253,7 +353,7 @@ export default {
       ]
     };
     this.playerOptions3 = Object.assign({}, this.playerOptions, this.playerSource3);
-    
+
     this.playerSource4 = {
       sources: [// 流配置，数组形式，会根据兼容顺序自动切换
         {
@@ -264,8 +364,20 @@ export default {
       ]
     };
     this.playerOptions4 = Object.assign({}, this.playerOptions, this.playerSource4);
+
+    this.playerSourceDash = {
+      sources: [
+        {
+          type: 'application/dash+xml',
+          src: 'https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd',
+          label: 'Dash'
+        }
+      ]
+    };
+    this.playerSourceDashOption = Object.assign({}, this.playerOptions, this.playerSourceDashOption);
+
   },
-  mounted() {
+  mounted () {
   }
 }
 </script>
@@ -273,6 +385,9 @@ export default {
 <style lang="less" scoped>
 .container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .player {
   flex: 1;
